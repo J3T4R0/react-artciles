@@ -5,6 +5,8 @@ github.com/loq24/wp-react-typescript/
 build.affinity.co/sharing-code-between-web-react-native-why-how-to-configure-metro-for-code-sharing-d6ec73427e08
 github.com/expo/turtle-cli-example/
 medium.com/better-programming/build-your-own-micro-frontend-ecosystem-a05128c74f99
+https://link.medium.com/YexrLziPuz
+https://link.medium.com/1MfPC4ctl1
 ### Author
 Alvise Susmel 
 ## Key Takeaways
