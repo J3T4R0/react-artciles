@@ -4,6 +4,7 @@ A place for different bootstraps, either for making or for compiling
 github.com/loq24/wp-react-typescript/
 build.affinity.co/sharing-code-between-web-react-native-why-how-to-configure-metro-for-code-sharing-d6ec73427e08
 github.com/expo/turtle-cli-example/
+medium.com/better-programming/build-your-own-micro-frontend-ecosystem-a05128c74f99
 ### Author
 Alvise Susmel 
 ## Key Takeaways
@@ -84,7 +85,67 @@ ios:
     - NODE_VERSION="12.13.1"
     - YARN_VERSION="1.21.1"
 ```
+craapp.js
+```javascript
+import React from 'react';
+import logo from './logo.svg';
+import './App.css';
 
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={`${process.env.REACT_APP_CONTENT_HOST}${logo}`} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
+}
+
+export default App;
+```
+craIndex.js
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
+
+// render micro frontend function
+window.renderCreatereactapp = (containerId, history) => {
+  ReactDOM.render(
+    <App history={history}/>,
+    document.getElementById(containerId)
+  );
+  serviceWorker.unregister();
+};
+
+// unmount micro frontend function
+window.unmountCreatereactapp = containerId => {
+  ReactDOM.unmountComponentAtNode(document.getElementById(containerId));
+};
+
+// Mount to root if it is not a micro frontend
+if (!document.getElementById('Createreactapp-container')) {
+  ReactDOM.render(<App />, document.getElementById('root'));
+}
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();
+```
 
 ## Useful Tools
 * metro
